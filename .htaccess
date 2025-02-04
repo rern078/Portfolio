@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Rewrite all requests to a clean URL to the corresponding PHP file in the 'auth' folder
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^login$ auth/login.php [L]
+RewriteRule ^register$ auth/register.php [L]
+RewriteRule ^logout$ auth/logout.php [L]
+RewriteRule ^dashboard$ admin/index.php [L]
