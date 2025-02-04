@@ -1,0 +1,98 @@
+ /* General body styling */
+ body {
+       font-family: 'Arial', sans-serif;
+       background-color: #f4f4f4;
+       margin: 0;
+       padding: 0;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+ }
+
+ /* Container for the form */
+ .reigster-container,
+ .login-container {
+       background-color: #fff;
+       padding: 2rem;
+       border-radius: 8px;
+       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+       width: 100%;
+       max-width: 400px;
+       text-align: center;
+ }
+
+ /* Heading styling */
+ .reigster-container h1,
+ .login-container h2 {
+       margin-bottom: 1.5rem;
+       color: #333;
+ }
+
+ /* Error message styling */
+ .error-message {
+       color: #ff0000;
+       margin-bottom: 1rem;
+       font-size: 0.9rem;
+ }
+
+ /* Input field styling */
+ .reigster-container input,
+ .login-container input {
+       width: 100%;
+       padding: 0.75rem;
+       margin-bottom: 1rem;
+       border: 1px solid #ddd;
+       border-radius: 4px;
+       font-size: 1rem;
+       box-sizing: border-box;
+ }
+
+ /* Input field focus styling */
+ .reigster-container input:focus,
+ .login-container input:focus {
+       border-color: #3498db;
+       outline: none;
+       box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+ }
+
+ /* Button styling */
+ .reigster-container button,
+ .login-container button {
+       width: 100%;
+       padding: 0.75rem;
+       background-color: #3498db;
+       color: #fff;
+       border: none;
+       border-radius: 4px;
+       font-size: 1rem;
+       cursor: pointer;
+       transition: background-color 0.3s ease;
+ }
+
+ /* Button hover effect */
+ .reigster-container button:hover,
+ .login-container button:hover {
+       background-color: #2980b9;
+ }
+
+ /* Link styling */
+ .reigster-container a,
+ .login-container a {
+       color: #3498db;
+       text-decoration: none;
+       font-size: 0.9rem;
+ }
+
+ /* Link hover effect */
+ .reigster-container a:hover,
+ .login-container a:hover {
+       text-decoration: underline;
+ }
+
+ /* Paragraph styling */
+ .reigster-container p,
+ .login-container p {
+       margin-top: 1rem;
+       color: #555;
+ }

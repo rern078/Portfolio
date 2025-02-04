@@ -1,9 +1,11 @@
 RewriteEngine On
 
-# Rewrite all requests to a clean URL to the corresponding PHP file in the 'auth' folder
+# Remove .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+# Redirect all unknown requests to pageFile.php
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^login$ auth/login.php [L]
-RewriteRule ^register$ auth/register.php [L]
-RewriteRule ^logout$ auth/logout.php [L]
-RewriteRule ^dashboard$ admin/index.php [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ pageFile.php [QSA,L]

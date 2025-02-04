@@ -1,22 +1,18 @@
 <?php
-require_once '../includes/auth_functions.php';
+require_once '../includes/functions.php';
+// require_once '../includes/pageFile.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $username = $_POST['username'];
-      $email = $_POST['email'];
-      $password = $_POST['password'];
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+      $username = trim($_POST["username"]);
+      $email = trim($_POST["email"]);
+      $password = $_POST["password"];
 
       if (registerUser($username, $email, $password)) {
-            // After successful registration, log the user in
-            if (loginUser($username, $password)) {
-                  // header("Location: ../admin/index.php");
-                  header("Location: " . pageUrl('index'));
-                  exit; 
-            } else {
-                  $error = "Login failed after registration.";
-            }
+            header("Location: ../admin/index.php");
+            // header("Location: " . pageUrl('admin'));
+            exit();
       } else {
-            $error = "Registration failed! Please try again.";
+            $error = "Registration failed. Try again!";
       }
 }
 ?>
@@ -26,18 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <head>
       <title>Register</title>
+      <link rel="stylesheet" href="../assets/admin/css/main.css">
 </head>
 
 <body>
-      <h2>Register</h2>
-      <?php if (isset($error)) echo "<p style='color:red'>$error</p>"; ?>
-      <form method="POST">
-            <input type="text" name="username" placeholder="Username" required><br>
-            <input type="email" name="email" placeholder="Email" required><br>
-            <input type="password" name="password" placeholder="Password" required><br>
-            <button type="submit">Register</button>
-      </form>
-      <p>Already have an account? <a href="/login">Login</a></p>
+      <div class="reigster-container">
+            <h2>Register</h2>
+            <?php if (!empty($error)) echo "<p class='error-message'>$error</p>"; ?>
+            <form action="" method="POST">
+                  <input type="text" name="username" placeholder="Username" required><br>
+                  <input type="email" name="email" placeholder="Email" required><br>
+                  <input type="password" name="password" placeholder="Password" required><br>
+                  <button type="submit">Register</button>
+            </form>
+            <p>Already have an account? <a href="<?php echo pageUrl('login'); ?>">Login</a></p>
+      </div>
 </body>
 
 </html>

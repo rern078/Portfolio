@@ -1,15 +1,22 @@
 <?php
-function pageUrl($page)
-{
-      // Map page names to URL paths
-      $routes = [
-            'login' => '/login',         // Maps 'login' to '/login'
-            'register' => '/register',   // Maps 'register' to '/register'
-            'index' => '/dashboard',         // Maps 'index' to '/index'
-            'logout' => '/logout',
-            // Add other routes here as needed
-      ];
+// Route Mapping
+$routes = [
+      'login' => 'auth/login.php',
+      'register' => 'auth/register.php',
+      'admin' => 'admin/index.php',
+      'logout' => 'auth/logout.php',
+      'home' => 'index.php'
+];
 
-      // Return the corresponding URL for the given page
-      return isset($routes[$page]) ? $routes[$page] : '/';  // Default to home if no match
+$requestUri = trim($_SERVER['REQUEST_URI'], '/');
+
+if (empty($requestUri)) {
+      $requestUri = 'home';
+}
+
+if (isset($routes[$requestUri])) {
+      require_once $routes[$requestUri];
+} else {
+      http_response_code(404);
+      echo "Page not found!";
 }
