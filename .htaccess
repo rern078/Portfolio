@@ -1,4 +1,6 @@
 RewriteEngine On
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
 # Rewrite rules for each page
 RewriteRule ^login$ /auth/login.php [L]
