@@ -8,8 +8,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $password = $_POST["password"];
 
       if (registerUser($username, $email, $password)) {
-            header("Location: ../admin/index.php");
-            // header("Location: " . pageUrl('admin'));
+            // header("Location: ../admin/index.php");
+            header("Location: " . baseUrl('admin'));
             exit();
       } else {
             $error = "Registration failed. Try again!";
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                   <input type="password" name="password" placeholder="Password" required><br>
                   <button type="submit">Register</button>
             </form>
-            <p>Already have an account? <a href="<?php echo pageUrl('login'); ?>">Login</a></p>
+            <p>Already have an account? <a href="<?php echo baseUrl('login'); ?>">Login</a></p>
       </div>
 </body>
 

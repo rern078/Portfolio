@@ -1,11 +1,13 @@
 <?php
 require_once 'config.php';
 session_start();
-// require_once 'pageFile.php';
-function pageUrl($page)
+
+// ✅ URl config
+function baseUrl($path = '')
 {
-      return '/' . $page;
+      return 'http://' . $_SERVER['HTTP_HOST'] . '/' . $path;
 }
+
 // ✅ Register User
 function registerUser($username, $email, $password)
 {

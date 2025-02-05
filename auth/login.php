@@ -6,7 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $password = $_POST["password"];
 
       if (loginUser($email, $password)) {
-            header("Location: ../admin/index.php");
+            // header("Location: ../admin/index.php");
+            header("Location: " . baseUrl('admin'));
             exit();
       } else {
             $error = "Invalid login credentials!";
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                   <input type="password" name="password" placeholder="Password" required><br>
                   <button type="submit">Login</button>
             </form>
-            <p>Don't have an account? <a href="<?php echo pageUrl('register'); ?>">Register</a></p>
+            <p>Don't have an account? <a href="<?php echo baseUrl('register'); ?>">Register</a></p>
       </div>
 </body>
 
