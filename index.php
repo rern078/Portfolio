@@ -1,5 +1,6 @@
 <?php include_once 'includes/functions.php'; ?>
 <?php include_once 'users/inc/title.php'; ?>
+<?php require_once "lang/$current_lang/mod_header.php"; ?>
 <?php include_once 'users/inc/header.php'; ?>
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">

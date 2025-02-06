@@ -5,7 +5,35 @@ session_start();
 // ✅ URl config
 function baseUrl($path = '')
 {
-      return 'http://' . $_SERVER['HTTP_HOST'] . '/' . $path;
+      // return 'http://' . $_SERVER['HTTP_HOST'] . '/' . $path;
+      return '/' . $path;
+}
+// ✅ language
+
+$default_lang = 'en';
+$available_langs = ['en', 'cn', 'th'];
+
+$request_uri = $_SERVER['REQUEST_URI'];
+$segments = explode('/', trim($request_uri, '/'));
+
+$lang_from_url = $segments[0];
+
+if (in_array($lang_from_url, $available_langs)) {
+      $_SESSION['lang'] = $lang_from_url;
+
+      array_shift($segments);
+      $request_uri = '/' . implode('/', $segments);
+} elseif (!isset($_SESSION['lang'])) {
+      $browser_lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+      $_SESSION['lang'] = in_array($browser_lang, $available_langs) ? $browser_lang : $default_lang;
+}
+
+$current_lang = $_SESSION['lang'];
+
+if ($current_lang !== $lang_from_url) {
+      $new_url = '/' . $current_lang . $request_uri;
+      header("Location: $new_url");
+      exit;
 }
 
 // ✅ Register User

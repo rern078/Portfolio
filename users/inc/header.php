@@ -16,8 +16,8 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                  <a href="/" class="nav-item nav-link active">Home</a>
-                  <a href="<?php echo baseUrl('about-us'); ?>" class="nav-item nav-link">About</a>
+                  <a href="/" class="nav-item nav-link active"><?php echo $lang['home']; ?></a>
+                  <a href="<?php echo baseUrl('about-us'); ?>" class="nav-item nav-link"><?php echo $lang['about']; ?></a>
                   <a href="<?php echo baseUrl('courses'); ?>" class="nav-item nav-link">Courses</a>
                   <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -29,7 +29,7 @@
                               <a href="<?php echo baseUrl('404'); ?>" class="dropdown-item">404 Page</a>
                         </div>
                   </div>
-                  <a href="<?php echo baseUrl('contact-us'); ?>" class="nav-item nav-link">Contact</a>
+                  <a href="<?php echo baseUrl('contact-us'); ?>" class="nav-item nav-link"><?php echo $lang['contact']; ?></a>
             </div>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
       </div>
