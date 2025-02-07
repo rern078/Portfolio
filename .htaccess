@@ -1,12 +1,4 @@
 RewriteEngine On
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
-# RewriteRule ^(en|cn|th)/?$ index.php [L,QSA]
-# RewriteRule ^(en|cn|th)/(.+)$ $2 [L,QSA]
-
-# For any path like /about-us/en, /about-us/cn, /about-us/th
-# RewriteRule ^(en|cn|th)/(.+)$ index.php?page=$2&lang=$1 [L,QSA]
 
 # Rewrite rules for each page
 RewriteRule ^login$ /auth/login.php [L]
