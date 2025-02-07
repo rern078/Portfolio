@@ -16,20 +16,20 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                  <a href="/" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == '/') ? 'active' : ''; ?>"><?php echo $lang['home']; ?></a>
-                  <a href="<?php echo baseUrl('about-us'); ?>" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('about-us')) ? 'active' : ''; ?>"><?php echo $lang['about']; ?></a>
-                  <a href="<?php echo baseUrl('courses'); ?>" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('courses')) ? 'active' : ''; ?>">Courses</a>
+                  <a href="/" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == '/') ? 'active' : ''; ?>" data-page="home"><?php echo $lang['home']; ?></a>
+                  <a href="<?php echo baseUrl('about-us'); ?>" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('about-us')) ? 'active' : ''; ?>" data-page="about"><?php echo $lang['about']; ?></a>
+                  <a href="<?php echo baseUrl('courses'); ?>" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('courses')) ? 'active' : ''; ?>" data-page="courses">Courses</a>
                   <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle <?php echo (in_array($_SERVER['REQUEST_URI'], [baseUrl('education'), baseUrl('experience'), baseUrl('skills'), baseUrl('testimonial')])) ? 'active' : ''; ?>" data-bs-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu fade-down m-0">
-                              <a href="<?php echo baseUrl('education'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('education')) ? 'active' : ''; ?>">Education</a>
-                              <a href="<?php echo baseUrl('experience'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('experience')) ? 'active' : ''; ?>">Experience</a>
-                              <a href="<?php echo baseUrl('skills'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('skills')) ? 'active' : ''; ?>">Skills</a>
-                              <a href="<?php echo baseUrl('testimonial'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('testimonial')) ? 'active' : ''; ?>">Testimonial</a>
+                              <a href="<?php echo baseUrl('education'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('education')) ? 'active' : ''; ?>" data-page="education">Education</a>
+                              <a href="<?php echo baseUrl('experience'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('experience')) ? 'active' : ''; ?>" data-page="experience">Experience</a>
+                              <a href="<?php echo baseUrl('skills'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('skills')) ? 'active' : ''; ?>" data-page="skills">Skills</a>
+                              <a href="<?php echo baseUrl('testimonial'); ?>" class="dropdown-item <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('testimonial')) ? 'active' : ''; ?>" data-page="testimonial">Testimonial</a>
                               <a href="<?php echo baseUrl('404'); ?>" class="dropdown-item">404 Page</a>
                         </div>
                   </div>
-                  <a href="<?php echo baseUrl('contact-us'); ?>" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('contact-us')) ? 'active' : ''; ?>"><?php echo $lang['contact']; ?></a>
+                  <a href="<?php echo baseUrl('contact-us'); ?>" class="nav-item nav-link <?php echo ($_SERVER['REQUEST_URI'] == baseUrl('contact-us')) ? 'active' : ''; ?>" data-page="contact"><?php echo $lang['contact']; ?></a>
             </div>
             <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
       </div>

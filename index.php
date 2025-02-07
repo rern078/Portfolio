@@ -2,6 +2,9 @@
 <?php include_once 'users/inc/title.php'; ?>
 <?php require_once "lang/$current_lang/mod_header.php"; ?>
 <?php include_once 'users/inc/header.php'; ?>
+<div id="content">
+      <!-- Page content will be loaded here -->
+</div>
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
       <div class="owl-carousel header-carousel position-relative">
