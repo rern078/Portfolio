@@ -8,6 +8,23 @@
     --dark-sys-3: #003566;
 }
 
+body,
+.btn,
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+    font-family: cursive !important;
+}
+
 body::-webkit-scrollbar {
     display: none;
 }
@@ -29,9 +46,31 @@ body::-webkit-scrollbar {
     background-color: var(--dark-sys-3) !important;
 }
 
+
 .theme-color-2 .navbar-light .navbar-nav .nav-link,
 .theme-color-3 .navbar-light .navbar-nav .nav-link {
     color: var(--light);
+}
+
+.theme-color-1 .footer .copyright a,
+.theme-color-1 .footer .btn.btn-link,
+.theme-color-1 .footer .btn.btn-social,
+.theme-color-1 .text-light,
+.theme-color-1 .text-white {
+    color: var(--dark) !important;
+    /* font-weight: 500; */
+}
+
+.theme-color-1 .footer .btn.btn-social {
+    border-color: var(--dark) !important;
+}
+
+.theme-color-1 .footer .copyright {
+    border-top-color: var(--dark) !important;
+}
+
+.theme-color-1 .footer .footer-menu a {
+    border-right-color: var(--dark) !important;
 }
 
 /* end style color theme  */
@@ -149,7 +188,7 @@ body::-webkit-scrollbar {
 
 .navbar-light .navbar-nav .nav-link {
     color: var(--dark);
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .navbar-light.sticky-top {
@@ -598,6 +637,10 @@ body::-webkit-scrollbar {
 
 .sbutton.whatsapp {
     background: #00e676;
+}
+
+.sbutton.gmail {
+    background: #d11d56;
 }
 
 .sbuttons a:hover i {
