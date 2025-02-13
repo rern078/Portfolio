@@ -78,3 +78,21 @@
 <!-- Footer End -->
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- Contact Us  Start -->
+<div class="sbuttons">
+      <a href="#" target="_blank" class="sbutton whatsapp" tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="#" target="_blank" class="sbutton fb" tooltip="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" target="_blank" class="sbutton telegram" tooltip="Telegram"><i class="fab fa-telegram"></i></a>
+      <a target="_blank" class="sbutton mainsbutton" tooltip="Share"><i class="fas fa-share-alt"></i></a>
+</div>
+<!-- Contact Us  End -->
+<!-- Theme Color  Start -->
+<button class="toggle-btn" id="toggleSidebar">
+      <i class="bi bi-palette"></i>
+</button>
+<div class="social-sidebar" id="socialSidebar">
+      <a class="theme-option" data-theme="theme-color-1"><i class="far fa-lightbulb"></i> Light</a>
+      <a class="theme-option" data-theme="theme-color-2"><i class="fas fa-desktop"></i> Dark</a>
+      <a class="theme-option" data-theme="theme-color-3"><i class="fas fa-moon"></i> Blue Light</a>
+</div>
+<!-- Theme Color End -->
