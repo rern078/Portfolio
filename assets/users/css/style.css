@@ -74,6 +74,17 @@ body::-webkit-scrollbar {
 }
 
 /* end style color theme  */
+.logo-name {
+    background-image: -webkit-linear-gradient(45deg, hsl(8, 86%, 60%), hsl(188, 86%, 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* @media (max-width: 640px) {
+    .logo-name {
+        font-size: 1.2rem;
+    }
+} */
 
 .fw-medium {
     font-weight: 600 !important;
@@ -709,7 +720,7 @@ body::-webkit-scrollbar {
 }
 
 /* theme code  */
-.social-sidebar {
+.theme-sidebar {
     position: fixed;
     top: 50%;
     right: -200px;
@@ -718,26 +729,50 @@ body::-webkit-scrollbar {
     color: white;
     padding: 10px;
     border-radius: 10px 0 0 10px;
-    transition: 0.3s ease-in-out;
+    transition: right 0.3s ease-in-out;
+    transform: translateY(-50%);
 }
 
-.social-sidebar a {
+.theme-sidebar.open {
+    right: 0;
+}
+
+.theme-sidebar a {
     display: block;
     color: white;
     padding: 10px;
     text-decoration: none;
+    transition: background 0.3s ease-in-out;
 }
 
-.social-sidebar a.active {
+.theme-sidebar a.active {
     background: var(--primary);
+    border-radius: 5px;
 }
 
-.social-sidebar a:hover {
+.theme-sidebar a:hover {
     background: #555;
 }
 
-.toggle-btn i {
-    font-size: 1.8rem;
+.theme-style a,
+.theme-color a {
+    display: block;
+    padding: 10px;
+    color: white;
+    transition: background 0.3s ease-in-out;
+}
+
+.theme-style a:hover,
+.theme-color a:hover {
+    background: #222;
+    border-radius: 5px;
+}
+
+.theme-style,
+.theme-color {
+    background: #555;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .toggle-btn {
@@ -747,7 +782,23 @@ body::-webkit-scrollbar {
     background: var(--primary);
     color: white;
     border: none;
-    padding: 1rem .5rem;
+    padding: 1rem 0.5rem;
     cursor: pointer;
     border-radius: 10px 0 0 10px;
+    transform: translateY(-50%);
+}
+
+.toggle-btn i {
+    font-size: 1.8rem;
+}
+
+
+/* style  canvas*/
+
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
 }

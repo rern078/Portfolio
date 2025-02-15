@@ -3,16 +3,25 @@
       <div class="container py-5">
             <div class="row g-5">
                   <div class="col-lg-3 col-md-6">
-                        <h4 class="text-white mb-3">Quick Link</h4>
-                        <a class="btn btn-link" href="">About Us</a>
-                        <a class="btn btn-link" href="">Contact Us</a>
-                        <a class="btn btn-link" href="">Privacy Policy</a>
-                        <a class="btn btn-link" href="">Terms & Condition</a>
-                        <a class="btn btn-link" href="">FAQs & Help</a>
+                        <h4 class="text-white mb-3">Skills</h4>
+                        <a class="btn btn-link" href="">HTML</a>
+                        <a class="btn btn-link" href="">CSS</a>
+                        <a class="btn btn-link" href="">BOOSTRAP</a>
+                        <a class="btn btn-link" href="">PHP</a>
+                        <a class="btn btn-link" href="">JAVA</a>
+                        <a class="btn btn-link" href="">MYSQL</a>
+                        <a class="btn btn-link" href="">ORACLE</a>
                   </div>
                   <div class="col-lg-3 col-md-6">
-                        <h4 class="text-white mb-3">Contact</h4>
-                        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                        <h4 class="text-white mb-3">Other</h4>
+                        <a class="btn btn-link" href="">VUE</a>
+                        <a class="btn btn-link" href="">WORDPRESS</a>
+                        <a class="btn btn-link" href="">LARAVEL</a>
+                        <a class="btn btn-link" href="">AWS</a>
+                        <a class="btn btn-link" href="">REACT</a>
+                        <a class="btn btn-link" href="">TYPESCRIPT</a>
+                        <a class="btn btn-link" href="">MONGODB</a>
+                        <!-- <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
                         <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
                         <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
                         <div class="d-flex pt-2">
@@ -20,34 +29,24 @@
                               <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
                               <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
                               <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                        </div>
+                        </div> -->
                   </div>
                   <div class="col-lg-3 col-md-6">
                         <h4 class="text-white mb-3">Gallery</h4>
                         <div class="row g-2 pt-2">
-                              <div class="col-4">
-                                    <img class="img-fluid bg-light p-1" src="../assets/users/img/course-1.jpg" alt="">
-                              </div>
-                              <div class="col-4">
-                                    <img class="img-fluid bg-light p-1" src="../assets/users/img/course-2.jpg" alt="">
-                              </div>
-                              <div class="col-4">
-                                    <img class="img-fluid bg-light p-1" src="../assets/users/img/course-3.jpg" alt="">
-                              </div>
-                              <div class="col-4">
-                                    <img class="img-fluid bg-light p-1" src="../assets/users/img/course-2.jpg" alt="">
-                              </div>
-                              <div class="col-4">
-                                    <img class="img-fluid bg-light p-1" src="../assets/users/img/course-3.jpg" alt="">
-                              </div>
-                              <div class="col-4">
-                                    <img class="img-fluid bg-light p-1" src="../assets/users/img/course-1.jpg" alt="">
-                              </div>
+                              <?php
+                              $logos = ['html', 'css', 'js', 'bootstrap', 'php', 'java', 'mysql', 'oracle', 'vue', 'wordpress', 'laravel', 'aws'];
+                              foreach ($logos as $logo) {
+                              ?>
+                                    <div class="col-3">
+                                          <img class="img-fluid bg-light p-1" src="../assets/users/img/logo/<?= $logo ?>.png" alt="">
+                                    </div>
+                              <?php  } ?>
                         </div>
                   </div>
                   <div class="col-lg-3 col-md-6">
                         <h4 class="text-white mb-3">Newsletter</h4>
-                        <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                        <p>Enthusiastic about developing and designing cutting-edge web and software solutions to solve real-world problems.</p>
                         <div class="position-relative mx-auto" style="max-width: 400px;">
                               <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
                               <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
@@ -91,9 +90,21 @@
 <button class="toggle-btn" id="toggleSidebar">
       <i class="bi bi-palette"></i>
 </button>
-<div class="social-sidebar" id="socialSidebar">
-      <a class="theme-option" data-theme="theme-color-1"><i class="far fa-lightbulb"></i> Light</a>
-      <a class="theme-option" data-theme="theme-color-2"><i class="fas fa-desktop"></i> Dark</a>
-      <a class="theme-option" data-theme="theme-color-3"><i class="fas fa-moon"></i> Light Blue</a>
+
+<div class="theme-sidebar" id="themeSidebar">
+      <a id="themeColor"><i class="bi bi-palette"></i> Theme Color</a>
+      <div class="theme-color">
+            <a class="theme-option" data-theme="theme-color-1"><i class="far fa-lightbulb"></i> Light</a>
+            <a class="theme-option" data-theme="theme-color-2"><i class="fas fa-desktop"></i> Dark</a>
+            <a class="theme-option" data-theme="theme-color-3"><i class="fas fa-moon"></i> Light Blue</a>
+      </div>
+      <a id="themeStyle"><i class="bi bi-palette"></i> Theme Style</a>
+      <div class="theme-style">
+            <a class="theme-st" data-theme="theme-style-1"><i class="fab fa-ethereum"></i> Style 1</a>
+            <a class="theme-st" data-theme="theme-style-2"><i class="fab fa-ethereum"></i> Style 2</a>
+            <a class="theme-st" data-theme="theme-style-3"><i class="fab fa-ethereum"></i> Style 3</a>
+            <a class="theme-st" data-theme="theme-style-4"><i class="fab fa-ethereum"></i> Style 4</a>
+      </div>
 </div>
+
 <!-- Theme Color End -->

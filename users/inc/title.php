@@ -39,4 +39,5 @@
       <script src="assets/users/lib/owlcarousel/owl.carousel.min.js"></script>
       <script src="assets/users/js/main.js"></script>
       <script src="assets/users/js/uigg.js"></script>
+
 </head>

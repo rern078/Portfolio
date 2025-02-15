@@ -1,3 +1,8 @@
+<canvas id="animation"></canvas>
+<canvas id="constellationCanvas" style="display: none;"></canvas>
+<canvas id="particles" style="display: none;"></canvas>
+<canvas class='connecting-dots' id="connecting-dots" style="display: none;"></canvas>
+<!-- <script src="assets/users/js/style4-canvas.js"></script> -->
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
       <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -9,7 +14,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
       <a href="/" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>CHAMRERN TIENG</h2>
+            <h2 class="m-0 text-primary logo-name"><i class="fa fa-book me-3"></i>CHAMRERN TIENG</h2>
       </a>
       <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -34,4 +39,3 @@
             <!-- <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a> -->
       </div>
 </nav>
-<!-- Navbar End -->
