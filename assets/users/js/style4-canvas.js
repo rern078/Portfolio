@@ -1,64 +1,49 @@
-const canvas = document.getElementById('connecting-dots');
-const ctx = canvas.getContext('2d');
-let raf;
+const canvas = document.getElementById("binaryCanvas");
+const ctx = canvas.getContext("2d");
 
-ctx.canvas.width = window.innerWidth;
-ctx.canvas.height = window.innerHeight;
+// Set canvas size
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-ctx.font = '20px Arial';
-ctx.fillStyle = '#fff';
+// Character set (0s and 1s)
+const binaryChars = ["0", "1"];
 
-const fontSize = 20;
-const columns = Math.floor(canvas.width / fontSize);
-const rows = Math.floor(canvas.height / fontSize);
-
-const binChars = ['0', '1'];
-const bits = [];
-const bitHeight = fontSize;
-const bitWidth = fontSize;
-
-// Populate array of 'bits'
-for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < columns; c++) {
-            bits.push({
-                  x: c * bitWidth,
-                  y: r * bitHeight,
-                  value: binChars[Math.floor(Math.random() * binChars.length)],
-                  hasDrawn: false
-            });
-      }
-}
-
-// Vars for manually calculating frame rate
-const fps = 10;
-const interval = 1000 / fps;
-let now;
-let then = Date.now();
-let delta;
-
-// Draw all bits once before starting animation
-for (let bit of bits) {
-      ctx.clearRect(bit.x, bit.y, bitWidth, bitHeight);
-      ctx.fillText(bit.value, bit.x, bit.y + bitHeight);
-      bit.hasDrawn = true;
-}
+// Array for column positions
+const columns = Array(Math.floor(canvas.width / 15)).fill(0);
 
 function draw() {
-      raf = window.requestAnimationFrame(draw);
-      now = Date.now();
-      delta = now - then;
+      // Set background with opacity for fading effect
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = "rgba(0, 0, 0, 0.1)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = 'source-over';
 
-      if (delta > interval) {
-            for (let bit of bits) {
-                  if (bit.hasDrawn === true && (Math.random() * 100) > 95) { // If passes the randomness check
-                        let newVal = (bit.value === binChars[1]) ? binChars[0] : binChars[1];
+      ctx.fillStyle = "limegreen";
+      ctx.font = "15px monospace";
 
-                        ctx.clearRect(bit.x, bit.y, bitWidth, bitHeight);
-                        ctx.fillText(newVal, bit.x, bit.y + bitHeight);
-                        bit.value = newVal;
-                  }
+      columns.forEach((y, index) => {
+            // Pick a random character
+            const text = binaryChars[Math.floor(Math.random() * binaryChars.length)];
+
+            // Calculate x position
+            const x = index * 15;
+            ctx.fillText(text, x, y);
+
+            // Reset column when it reaches the bottom
+            if (y > canvas.height || Math.random() > 0.98) {
+                  columns[index] = 0;
+            } else {
+                  columns[index] = y + 15;
             }
-            then = now - (delta % interval);
-      }
+      });
 }
-draw();
+
+setInterval(draw, 50);
+
+// Resize canvas when window resizes
+window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      columns.length = Math.floor(canvas.width / 15);
+      columns.fill(0);
+});

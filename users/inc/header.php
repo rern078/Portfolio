@@ -1,7 +1,8 @@
 <canvas id="animation"></canvas>
 <canvas id="constellationCanvas" style="display: none;"></canvas>
 <canvas id="particles" style="display: none;"></canvas>
-<canvas class='connecting-dots' id="connecting-dots" style="display: none;"></canvas>
+<canvas id="binaryCanvas" style="display: none;"></canvas>
+<canvas id="binaryCanvasStyle" style="display: none;"></canvas>
 <!-- <script src="assets/users/js/style4-canvas.js"></script> -->
 <!-- Spinner Start -->
 <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">

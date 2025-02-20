@@ -113,34 +113,46 @@ $(document).ready(function () {
                         $('#animation').show();
                         $('#constellationCanvas').hide();
                         $('#particles').hide();
-                        $('#connecting-dots').hide();
+                        $('#binaryCanvas').hide();
+                        $('#binaryCanvasStyle').hide();
                         loadScript('assets/users/js/style1-canvas.js');
                   } else if (savedTheme === 'theme-style-2') {
                         $('#animation').hide();
                         $('#constellationCanvas').show();
                         $('#particles').hide();
-                        $('#connecting-dots').hide();
+                        $('#binaryCanvas').hide();
+                        $('#binaryCanvasStyle').hide();
                         loadScript('assets/users/js/style2-canvas.js');
                   } else if (savedTheme === 'theme-style-3') {
                         $('#animation').hide();
                         $('#constellationCanvas').hide();
                         $('#particles').show();
-                        $('#connecting-dots').hide();
+                        $('#binaryCanvas').hide();
+                        $('#binaryCanvasStyle').hide();
                         loadScript('assets/users/js/style3-canvas.js');
                   } else if (savedTheme === 'theme-style-4') {
                         $('#animation').hide();
                         $('#constellationCanvas').hide();
                         $('#particles').hide();
-                        $('#connecting-dots').show();
+                        $('#binaryCanvas').show();
+                        $('#binaryCanvasStyle').hide();
                         loadScript('assets/users/js/style4-canvas.js');
+                  } else if (savedTheme === 'theme-style-5') {
+                        $('#animation').hide();
+                        $('#constellationCanvas').hide();
+                        $('#particles').hide();
+                        $('#binaryCanvas').hide();
+                        $('#binaryCanvasStyle').show();
+                        loadScript('assets/users/js/style5-canvas.js');
                   }
             } else {
-                  $('[data-theme="theme-style-1"]').addClass('active');
-                  $('#animation').show();
+                  $('[data-theme="theme-style-5"]').addClass('active');
+                  $('#animation').hide();
                   $('#constellationCanvas').hide();
                   $('#particles').hide();
-                  $('#connecting-dots').hide();
-                  loadScript('assets/users/js/style1-canvas.js');
+                  $('#binaryCanvas').hide();
+                  $('#binaryCanvasStyle').show();
+                  loadScript('assets/users/js/style5-canvas.js');
             }
       }
       setActiveThemeFromStorage();
@@ -155,7 +167,8 @@ $(document).ready(function () {
             $('#animation').show();
             $('#constellationCanvas').hide();
             $('#particles').hide();
-            $('#connecting-dots').hide();
+            $('#binaryCanvas').hide();
+            $('#binaryCanvasStyle').hide();
 
             loadScript('assets/users/js/style1-canvas.js');
       });
@@ -170,7 +183,8 @@ $(document).ready(function () {
             $('#animation').hide();
             $('#constellationCanvas').show();
             $('#particles').hide();
-            $('#connecting-dots').hide();
+            $('#binaryCanvas').hide();
+            $('#binaryCanvasStyle').hide();
 
             loadScript('assets/users/js/style2-canvas.js');
       });
@@ -185,7 +199,8 @@ $(document).ready(function () {
             $('#animation').hide();
             $('#constellationCanvas').hide();
             $('#particles').show();
-            $('#connecting-dots').hide();
+            $('#binaryCanvas').hide();
+            $('#binaryCanvasStyle').hide();
 
             loadScript('assets/users/js/style3-canvas.js');
       });
@@ -200,9 +215,26 @@ $(document).ready(function () {
             $('#animation').hide();
             $('#constellationCanvas').hide();
             $('#particles').hide();
-            $('#connecting-dots').show();
+            $('#binaryCanvas').show();
+            $('#binaryCanvasStyle').hide();
 
             loadScript('assets/users/js/style4-canvas.js');
+      });
+
+      // Click event for Style 5
+      $('[data-theme="theme-style-5"]').on('click', function () {
+            console.log('Style 5 selected');
+            $('.theme-st').removeClass('active');
+            $(this).addClass('active');
+            sessionStorage.setItem('theme', 'theme-style-5');
+
+            $('#animation').hide();
+            $('#constellationCanvas').hide();
+            $('#particles').hide();
+            $('#binaryCanvas').hide();
+            $('#binaryCanvasStyle').show();
+
+            loadScript('assets/users/js/style5-canvas.js');
       });
 
       function loadScript(src) {
