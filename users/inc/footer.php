@@ -105,6 +105,7 @@
             <a class="theme-st" data-theme="theme-style-3"><i class="fab fa-ethereum"></i> Style 3</a>
             <a class="theme-st" data-theme="theme-style-4"><i class="fab fa-ethereum"></i> Style 4</a>
             <a class="theme-st" data-theme="theme-style-5"><i class="fab fa-ethereum"></i> Style 5</a>
+            <a class="theme-st" data-theme="theme-style-6"><i class="fab fa-ethereum"></i> Style 6</a>
       </div>
 </div>
 

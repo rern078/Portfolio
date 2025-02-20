@@ -115,6 +115,7 @@ $(document).ready(function () {
                         $('#particles').hide();
                         $('#binaryCanvas').hide();
                         $('#binaryCanvasStyle').hide();
+                        $('#binaryCross').hide();
                         loadScript('assets/users/js/style1-canvas.js');
                   } else if (savedTheme === 'theme-style-2') {
                         $('#animation').hide();
@@ -122,6 +123,7 @@ $(document).ready(function () {
                         $('#particles').hide();
                         $('#binaryCanvas').hide();
                         $('#binaryCanvasStyle').hide();
+                        $('#binaryCross').hide();
                         loadScript('assets/users/js/style2-canvas.js');
                   } else if (savedTheme === 'theme-style-3') {
                         $('#animation').hide();
@@ -129,6 +131,7 @@ $(document).ready(function () {
                         $('#particles').show();
                         $('#binaryCanvas').hide();
                         $('#binaryCanvasStyle').hide();
+                        $('#binaryCross').hide();
                         loadScript('assets/users/js/style3-canvas.js');
                   } else if (savedTheme === 'theme-style-4') {
                         $('#animation').hide();
@@ -136,6 +139,7 @@ $(document).ready(function () {
                         $('#particles').hide();
                         $('#binaryCanvas').show();
                         $('#binaryCanvasStyle').hide();
+                        $('#binaryCross').hide();
                         loadScript('assets/users/js/style4-canvas.js');
                   } else if (savedTheme === 'theme-style-5') {
                         $('#animation').hide();
@@ -143,16 +147,26 @@ $(document).ready(function () {
                         $('#particles').hide();
                         $('#binaryCanvas').hide();
                         $('#binaryCanvasStyle').show();
+                        $('#binaryCross').hide();
                         loadScript('assets/users/js/style5-canvas.js');
+                  } else if (savedTheme === 'theme-style-6') {
+                        $('#animation').hide();
+                        $('#constellationCanvas').hide();
+                        $('#particles').hide();
+                        $('#binaryCanvas').hide();
+                        $('#binaryCanvasStyle').hide();
+                        $('#binaryCross').show();
+                        loadScript('assets/users/js/style6-canvas.js');
                   }
             } else {
-                  $('[data-theme="theme-style-5"]').addClass('active');
-                  $('#animation').hide();
+                  $('[data-theme="theme-style-1"]').addClass('active');
+                  $('#animation').show();
                   $('#constellationCanvas').hide();
                   $('#particles').hide();
                   $('#binaryCanvas').hide();
-                  $('#binaryCanvasStyle').show();
-                  loadScript('assets/users/js/style5-canvas.js');
+                  $('#binaryCanvasStyle').hide();
+                  $('#binaryCross').hide();
+                  loadScript('assets/users/js/style1-canvas.js');
             }
       }
       setActiveThemeFromStorage();
@@ -169,6 +183,7 @@ $(document).ready(function () {
             $('#particles').hide();
             $('#binaryCanvas').hide();
             $('#binaryCanvasStyle').hide();
+            $('#binaryCross').hide();
 
             loadScript('assets/users/js/style1-canvas.js');
       });
@@ -185,6 +200,7 @@ $(document).ready(function () {
             $('#particles').hide();
             $('#binaryCanvas').hide();
             $('#binaryCanvasStyle').hide();
+            $('#binaryCross').hide();
 
             loadScript('assets/users/js/style2-canvas.js');
       });
@@ -201,6 +217,7 @@ $(document).ready(function () {
             $('#particles').show();
             $('#binaryCanvas').hide();
             $('#binaryCanvasStyle').hide();
+            $('#binaryCross').hide();
 
             loadScript('assets/users/js/style3-canvas.js');
       });
@@ -217,6 +234,7 @@ $(document).ready(function () {
             $('#particles').hide();
             $('#binaryCanvas').show();
             $('#binaryCanvasStyle').hide();
+            $('#binaryCross').hide();
 
             loadScript('assets/users/js/style4-canvas.js');
       });
@@ -233,8 +251,26 @@ $(document).ready(function () {
             $('#particles').hide();
             $('#binaryCanvas').hide();
             $('#binaryCanvasStyle').show();
+            $('#binaryCross').hide();
 
             loadScript('assets/users/js/style5-canvas.js');
+      });
+
+      // Click event for Style 6
+      $('[data-theme="theme-style-6"]').on('click', function () {
+            console.log('Style 6 selected');
+            $('.theme-st').removeClass('active');
+            $(this).addClass('active');
+            sessionStorage.setItem('theme', 'theme-style-6');
+
+            $('#animation').hide();
+            $('#constellationCanvas').hide();
+            $('#particles').hide();
+            $('#binaryCanvas').hide();
+            $('#binaryCanvasStyle').hide();
+            $('#binaryCross').show();
+
+            loadScript('assets/users/js/style6-canvas.js');
       });
 
       function loadScript(src) {
