@@ -1,0 +1,7 @@
+:root {
+      --color-1: #2a2f5b;
+}
+
+.sidebar .sidebar-wrapper .nav-item .nav.nav-collapse .active {
+      background-color: var(--color-1);
+}
