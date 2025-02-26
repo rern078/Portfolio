@@ -1,10 +1,10 @@
 <?php
 session_start();
-include_once("../includes/admin_function.php");
 if (!isset($_SESSION['user_id'])) {
       header("Location: ../auth/login.php");
       exit();
 }
+include_once("../includes/admin_function.php");
 ?>
 
 <!DOCTYPE html>

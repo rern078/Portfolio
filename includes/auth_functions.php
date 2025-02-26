@@ -34,7 +34,7 @@ function loginUser($username, $password)
 
       // Redirect after login
       // header("Location: ../admin/index.php");  // Check if this is correct
-      header("Location: " . pageUrl('index'));
+      header("Location: " . baseUrl('index'));
       exit;  // Always add exit after header
 }
 
