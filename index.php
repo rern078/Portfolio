@@ -2,9 +2,6 @@
 <?php include_once 'users/inc/title.php'; ?>
 <?php require_once "lang/$current_lang/mod_header.php"; ?>
 <?php include_once 'users/inc/header.php'; ?>
-<div id="content">
-      <!-- Page content will be loaded here -->
-</div>
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
       <div class="owl-carousel header-carousel position-relative">
@@ -96,7 +93,7 @@
             <div class="row g-5">
                   <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                         <div class="position-relative h-100">
-                              <img class="img-fluid position-absolute w-100 h-100" src="../assets/users/img/pic/<?php echo md5("pic_1"); ?>.jpg" alt="" style="object-fit: cover;">
+                              <img class="img-fluid position-absolute w-100 h-100" src="../assets/users/img/about.jpg" alt="" style="object-fit: cover;">
                         </div>
                   </div>
                   <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
