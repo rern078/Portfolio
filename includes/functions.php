@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-session_start();
+// session_start();
 
 // ✅ URl config
 function baseUrl($path = '')
@@ -73,6 +73,44 @@ function addSkills($skill_name, $category, $description, $proficiency_level, $im
             die("Error: " . $e->getMessage());
       }
 }
+
+// ✅ Fetch Skills from Database
+function getSkills()
+{
+      global $pdo;
+      try {
+            $sql = "SELECT * FROM skills ORDER BY skill_id DESC"; // Fetch all skills
+            $stmt = $pdo->query($sql);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      } catch (PDOException $e) {
+            die("Error: " . $e->getMessage());
+      }
+}
+// ✅ Delete Skill by ID
+function deleteSkill($skill_id)
+{
+      global $pdo;
+      try {
+            // Prepare the DELETE statement
+            $sql = "DELETE FROM skills WHERE skill_id = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$skill_id]);
+
+            // Check if rows were affected
+            if ($stmt->rowCount() > 0) {
+                  return true;  // Successfully deleted
+            } else {
+                  return false;  // No rows affected, possibly invalid skill_id
+            }
+      } catch (PDOException $e) {
+            // Log the error message for debugging
+            error_log("Error: " . $e->getMessage());
+            echo 'Error: ' . $e->getMessage();
+            return false;
+      }
+}
+
+
 
 // ✅ Get All Portfolio Items (with Pagination Support)
 function getPortfolio($limit = null, $offset = 0)

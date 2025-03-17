@@ -1,5 +1,9 @@
 <?php
+// ob_start();
+// session_start();
 require_once '../includes/functions.php';
+$success = "";
+$error = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $skill_name = $_POST["skill_name"];
       $category = $_POST["category"];
@@ -17,20 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $target_file = $target_dir . $file_name;
             $image_url = "uploads/" . $file_name;
 
-            // if (move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
-            //       echo "File uploaded successfully.<br>";
-            // } else {
-            //       die("File upload failed.");
-            // }
+            if (!move_uploaded_file($_FILES["image_url"]["tmp_name"], $target_file)) {
+                  $error = "File upload failed.";
+            }
       }
 
       if (addSkills($skill_name, $category, $description, $proficiency_level, $image_url)) {
-            // header("Location: " . baseUrl('admin'));
-            exit();
+            $success = "Skill added successfully!";
       } else {
             $error = "Registration failed. Try again!";
       }
 }
+// ob_end_flush();
 ?>
 
 <div class="modal fade" id="skillModal" tabindex="-1" aria-labelledby="skillModalLable" aria-hidden="true">
@@ -41,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <form action="" method="POST" enctype="multipart/form-data">
+
                         <div class="modal-body">
                               <div class="mb-3">
                                     <label for="skill_name" class="col-form-label">Skill Name</label>
