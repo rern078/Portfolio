@@ -412,3 +412,13 @@
 </div>
 <!-- Testimonial End -->
 <?php include_once 'users/inc/footer.php'; ?>
+<script>
+      $(document).on('contextmenu', function(event) {
+            event.preventDefault();
+      });
+      $(document).on('keydown', function(event) {
+            if (event.ctrlKey && event.keyCode === 85) {
+                  event.preventDefault();
+            }
+      });
+</script>
