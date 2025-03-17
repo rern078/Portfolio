@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Feb 15, 2025 at 04:47 AM
+-- Generation Time: Mar 17, 2025 at 07:31 AM
 -- Server version: 5.7.36
 -- PHP Version: 5.6.40
 
@@ -100,12 +100,28 @@ CREATE TABLE IF NOT EXISTS `portfolio` (
 
 DROP TABLE IF EXISTS `skills`;
 CREATE TABLE IF NOT EXISTS `skills` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `skill_name` varchar(100) NOT NULL,
-  `proficiency` int(11) DEFAULT NULL,
+  `skill_id` int(11) NOT NULL AUTO_INCREMENT,
+  `skill_name` varchar(255) NOT NULL,
+  `description` text,
+  `category` varchar(100) DEFAULT NULL,
+  `proficiency_level` varchar(50) DEFAULT NULL,
+  `image_url` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`skill_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`skill_id`, `skill_name`, `description`, `category`, `proficiency_level`, `image_url`, `created_at`, `updated_at`) VALUES
+(1, 'CSS', 'CSS', 'CSS', '86', 'uploads/Screenshot_6.png', '2025-03-17 04:37:37', '2025-03-17 04:37:37'),
+(2, 'HTML', 'HTML', 'HTML', '100', 'uploads/w800.png', '2025-03-17 04:50:20', '2025-03-17 04:50:20'),
+(3, 'JAVA', 'JAVA', 'JAVA', '59', '', '2025-03-17 04:53:57', '2025-03-17 04:53:57'),
+(4, 'PYTHON', 'PYTHON', 'PYTHON', '79', 'uploads/w800.png', '2025-03-17 04:54:27', '2025-03-17 04:54:27'),
+(5, 'PYTHON', 'PYTHON', 'PYTHON', '79', 'uploads/w800.png', '2025-03-17 04:55:50', '2025-03-17 04:55:50'),
+(6, 'C#', 'C#', 'C#', '87', 'uploads/Screenshot_6.png', '2025-03-17 04:56:14', '2025-03-17 04:56:14');
 
 -- --------------------------------------------------------
 
