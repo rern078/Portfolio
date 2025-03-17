@@ -26,7 +26,7 @@
             <div class="col-md-12">
                   <div class="card">
                         <div class="card-header">
-                              <h4 class="card-title"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New</button></h4>
+                              <h4 class="card-title"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#skillModal">Add New</button></h4>
                         </div>
                         <div class="card-body">
                               <div class="table-responsive">

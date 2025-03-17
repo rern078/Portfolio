@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-session_start();
+// session_start();
 
 // ✅ URl config
 function baseUrl($path = '')
@@ -61,14 +61,14 @@ function loginUser($email, $password)
 
 
 
-// ✅ Add Portfolio Item
-function addPortfolio($title, $category, $description, $image, $project_link)
+// ✅ Add Skill Item
+function addSkills($skill_name, $category, $description, $proficiency_level, $image_url)
 {
       global $pdo;
       try {
-            $sql = "INSERT INTO portfolio (title, category, description, image, project_link) VALUES (?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO skills (skill_name, category, description, proficiency_level, image_url) VALUES (?, ?, ?, ?, ?)";
             $stmt = $pdo->prepare($sql);
-            return $stmt->execute([$title, $category, $description, $image, $project_link]);
+            return $stmt->execute([$skill_name, $category, $description, $proficiency_level, $image_url]);
       } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
       }
