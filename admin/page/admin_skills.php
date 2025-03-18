@@ -138,7 +138,7 @@ $skills = getSkills();
             });
       });
 </script>
-<script>
+<!-- <script>
       function destroySkill(element) {
             var skill_id = $(element).data('id');
 
@@ -169,4 +169,4 @@ $skills = getSkills();
                   });
             }
       }
-</script>
+</script> -->
