@@ -87,28 +87,28 @@ function getSkills()
       }
 }
 // ✅ Delete Skill by ID
-function deleteSkill($skill_id)
-{
-      global $pdo;
-      try {
-            // Prepare the DELETE statement
-            $sql = "DELETE FROM skills WHERE skill_id = ?";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$skill_id]);
+// function deleteSkill($skill_id)
+// {
+//       global $pdo;
+//       try {
+//             // Prepare the DELETE statement
+//             $sql = "DELETE FROM skills WHERE skill_id = ?";
+//             $stmt = $pdo->prepare($sql);
+//             $stmt->execute([$skill_id]);
 
-            // Check if rows were affected
-            if ($stmt->rowCount() > 0) {
-                  return true;  // Successfully deleted
-            } else {
-                  return false;  // No rows affected, possibly invalid skill_id
-            }
-      } catch (PDOException $e) {
-            // Log the error message for debugging
-            error_log("Error: " . $e->getMessage());
-            echo 'Error: ' . $e->getMessage();
-            return false;
-      }
-}
+//             // Check if rows were affected
+//             if ($stmt->rowCount() > 0) {
+//                   return true;  // Successfully deleted
+//             } else {
+//                   return false;  // No rows affected, possibly invalid skill_id
+//             }
+//       } catch (PDOException $e) {
+//             // Log the error message for debugging
+//             error_log("Error: " . $e->getMessage());
+//             echo 'Error: ' . $e->getMessage();
+//             return false;
+//       }
+// }
 
 
 

@@ -68,7 +68,7 @@ $skills = getSkills();
                                                             </td>
                                                             <td>
                                                                   <a href="" class="btn btn-warning btn-sm">Edit</a>
-                                                                  <!-- <a href="javascript:void(0);" class="btn btn-danger btn-sm delete-btn" data-id="<?= $skill['skill_id'] ?>" onclick="destroySkill(this)">Delete</a> -->
+                                                                  <a href="javascript:void(0);" class="btn btn-danger btn-sm delete-btn" data-id="<?= $skill['skill_id'] ?>" onclick="destroySkill(this)">Delete</a>
                                                             </td>
                                                       </tr>
                                                 <?php endforeach; ?>
