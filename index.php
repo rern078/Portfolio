@@ -2,6 +2,7 @@
 <?php include_once 'users/inc/title.php'; ?>
 <?php require_once "lang/$current_lang/mod_header.php"; ?>
 <?php include_once 'users/inc/header.php'; ?>
+<?php include_once 'alert.php'; ?>
 <!-- Carousel Start -->
 <div class="container-fluid p-0 mb-5">
       <div class="owl-carousel header-carousel position-relative">
@@ -412,7 +413,7 @@
 </div>
 <!-- Testimonial End -->
 <?php include_once 'users/inc/footer.php'; ?>
-<script>
+<!-- <script>
       $(document).on('contextmenu', function(event) {
             event.preventDefault();
       });
@@ -421,4 +422,4 @@
                   event.preventDefault();
             }
       });
-</script>
+</script> -->

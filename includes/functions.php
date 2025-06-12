@@ -1,6 +1,6 @@
 <?php
 require_once 'config.php';
-session_start();
+// session_start();
 
 // ✅ URl config
 function baseUrl($path = '')
@@ -90,25 +90,40 @@ function getSkills()
 function deleteSkill($skill_id)
 {
       global $pdo;
-      try {
-            // Prepare the DELETE statement
-            $sql = "DELETE FROM skills WHERE skill_id = ?";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$skill_id]);
 
-            // Check if rows were affected
+      try {
+            if (!is_numeric($skill_id) || $skill_id <= 0) {
+                  error_log("Invalid skill_id: " . $skill_id);
+                  return false;
+            }
+
+            $check_sql = "SELECT * FROM skills WHERE skill_id = :skill_id";
+            $check_stmt = $pdo->prepare($check_sql);
+            $check_stmt->bindParam(':skill_id', $skill_id, PDO::PARAM_INT);
+            $check_stmt->execute();
+
+            if ($check_stmt->rowCount() === 0) {
+                  error_log("Skill ID not found: " . $skill_id);
+                  return false;
+            }
+
+            $sql = "DELETE FROM skills WHERE skill_id = :skill_id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':skill_id', $skill_id, PDO::PARAM_INT);
+            $stmt->execute();
+
             if ($stmt->rowCount() > 0) {
-                  return true;  // Successfully deleted
+                  return true;
             } else {
-                  return false;  // No rows affected, possibly invalid skill_id
+                  error_log("Delete failed for skill_id: " . $skill_id);
+                  return false;
             }
       } catch (PDOException $e) {
-            // Log the error message for debugging
-            error_log("Error: " . $e->getMessage());
-            echo 'Error: ' . $e->getMessage();
+            error_log("PDO Exception: " . $e->getMessage());
             return false;
       }
 }
+
 
 
 
@@ -197,5 +212,52 @@ function deletePortfolio($id)
             return $stmt->execute([$id]);
       } catch (PDOException $e) {
             die("Error: " . $e->getMessage());
+      }
+}
+
+// ✅ Get SEO Settings
+function getSeoSettings($page = 'default')
+{
+      global $pdo;
+      try {
+            $stmt = $pdo->prepare("SELECT * FROM setting_seo WHERE id = 1");
+            $stmt->execute();
+            $seo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$seo) {
+                  // Return default values if no SEO settings found
+                  return [
+                        'page_title' => 'My Portfolio',
+                        'meta_description' => 'Welcome to my portfolio website',
+                        'meta_keywords' => 'portfolio, web development, design',
+                        'og_title' => 'My Portfolio',
+                        'og_description' => 'Welcome to my portfolio website',
+                        'og_image' => '',
+                        'twitter_card' => 'summary',
+                        'twitter_title' => 'My Portfolio',
+                        'twitter_description' => 'Welcome to my portfolio website',
+                        'twitter_image' => '',
+                        'canonical_url' => '',
+                        'robots_meta' => 'index,follow'
+                  ];
+            }
+            return $seo;
+      } catch (PDOException $e) {
+            error_log("Error fetching SEO settings: " . $e->getMessage());
+            return null;
+      }
+}
+
+// ✅ Get Social Media Links
+function getSocialMediaLinks()
+{
+      global $pdo;
+      try {
+            $stmt = $pdo->prepare("SELECT * FROM social_media WHERE is_active = 1 ORDER BY display_order ASC");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      } catch (PDOException $e) {
+            error_log("Error fetching social media links: " . $e->getMessage());
+            return [];
       }
 }

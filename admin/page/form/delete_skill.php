@@ -1,16 +1,22 @@
 <?php
 require_once '../includes/functions.php';
-if (isset($_POST['skill_id'])) {
-      $skill_id = $_POST['skill_id'];
-      if (empty($skill_id)) {
-            echo 'Skill ID is missing';
-            exit;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (!isset($_POST['skill_id']) || empty($_POST['skill_id'])) {
+            die('missing_skill_id');
       }
+
+      $skill_id = intval($_POST['skill_id']);
+
+      if ($skill_id <= 0) {
+            die('invalid_skill_id');
+      }
+
       if (deleteSkill($skill_id)) {
             echo 'success';
       } else {
-            echo 'failure';
+            echo 'failed_to_delete';
       }
 } else {
-      echo 'No skill ID provided';
+      echo 'invalid_request';
 }

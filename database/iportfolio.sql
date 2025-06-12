@@ -166,6 +166,61 @@ INSERT INTO `users` (`id`, `username`, `email`, `password`, `role`, `created_at`
 (1, 'Chamrern', 'chamrern@gmail.com', '$2y$10$2y7C6Lf7XIjRS24Ok6Vic.lKW7ureyhxB5Srxcez1ILZIqjWsqFB6', 'user', '2025-02-04 10:10:31');
 COMMIT;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `setting_seo`
+--
+
+DROP TABLE IF EXISTS `setting_seo`;
+CREATE TABLE IF NOT EXISTS `setting_seo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `page_title` varchar(255) NOT NULL,
+  `meta_description` text,
+  `meta_keywords` text,
+  `og_title` varchar(255) DEFAULT NULL,
+  `og_description` text,
+  `og_image` varchar(255) DEFAULT NULL,
+  `twitter_card` varchar(50) DEFAULT NULL,
+  `twitter_title` varchar(255) DEFAULT NULL,
+  `twitter_description` text,
+  `twitter_image` varchar(255) DEFAULT NULL,
+  `canonical_url` varchar(255) DEFAULT NULL,
+  `robots_meta` varchar(100) DEFAULT 'index,follow',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `social_media`
+--
+
+DROP TABLE IF EXISTS `social_media`;
+CREATE TABLE IF NOT EXISTS `social_media` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `platform` varchar(50) NOT NULL,
+  `url` varchar(255) NOT NULL,
+  `icon` varchar(50) DEFAULT NULL,
+  `display_order` int(11) DEFAULT 0,
+  `is_active` tinyint(1) DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `social_media`
+--
+
+INSERT INTO `social_media` (`platform`, `url`, `icon`, `display_order`, `is_active`) VALUES
+('WhatsApp', 'https://wa.me/967797762', 'fab fa-whatsapp', 1, 1),
+('Facebook', 'https://www.facebook.com/profile.php?id=61552667695284&mibextid=kFxxJD', 'fab fa-facebook-f', 2, 1),
+('Telegram', 'https://t.me/TienG_ChamrerN', 'fab fa-telegram', 3, 1),
+('Email', 'mailto:tiengchamrern2@gmail.com', 'fas fa-envelope', 4, 1);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

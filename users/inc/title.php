@@ -1,22 +1,70 @@
+<?php
+$seo = getSeoSettings();
+$social_links = getSocialMediaLinks();
+$current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+?>
 <!DOCTYPE html>
 <html lang="">
 
 <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Chamrern's Portfolio - Web Development</title>
-      <meta name="description" content="Explore Chamrern's professional web development and design portfolio. Showcasing creative, responsive websites and web applications for businesses and individuals.">
-      <meta name="keywords" content="full stack developer, web development, web developer portfolio, responsive design, UI/UX designer, website design, Chamrern portfolio, creative web solutions, modern web design">
-      <meta property="og:title" content="Chamrern's Portfolio - Full Stack Developer">
-      <meta property="og:description" content="Discover Chamrern's work in web development and design, offering responsive websites and engaging user interfaces.">
-      <meta property="og:image" content="assets/users/img/portfolio-thumbnail.jpg">
-      <meta property="og:url" content="https://chamrern.infinityfreeapp.com">
-      <meta name="google-site-verification" content="google5269eca169bff22d">
 
-      <meta name="twitter:card" content="summary_large_image">
-      <meta name="twitter:title" content="Chamrern's Portfolio - Full Stack Developer">
-      <meta name="twitter:description" content="Explore Chamrern's web development portfolio, featuring responsive websites and unique designs for clients.">
-      <meta name="twitter:image" content="assets/users/img/portfolio-thumbnail.jpg">
+      <!-- PWA Meta Tags -->
+      <meta name="theme-color" content="#06BBCC">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="black">
+      <meta name="apple-mobile-web-app-title" content="My Portfolio">
+      <link rel="manifest" href="/manifest.json">
+      <link rel="apple-touch-icon" href="/assets/users/img/pwa/icon-192x192.png">
+
+      <!-- SEO Meta Tags -->
+      <title><?php echo htmlspecialchars($seo['page_title']); ?></title>
+      <meta name="description" content="<?php echo htmlspecialchars($seo['meta_description']); ?>">
+      <meta name="keywords" content="<?php echo htmlspecialchars($seo['meta_keywords']); ?>">
+      <meta name="robots" content="<?php echo htmlspecialchars($seo['robots_meta']); ?>">
+
+      <!-- Canonical URL -->
+      <?php if (!empty($seo['canonical_url'])): ?>
+            <link rel="canonical" href="<?php echo htmlspecialchars($seo['canonical_url']); ?>">
+      <?php else: ?>
+            <link rel="canonical" href="<?php echo htmlspecialchars($current_url); ?>">
+      <?php endif; ?>
+
+      <!-- Open Graph Meta Tags -->
+      <meta property="og:title" content="<?php echo htmlspecialchars($seo['og_title']); ?>">
+      <meta property="og:description" content="<?php echo htmlspecialchars($seo['og_description']); ?>">
+      <?php if (!empty($seo['og_image'])): ?>
+            <meta property="og:image" content="<?php echo htmlspecialchars($seo['og_image']); ?>">
+      <?php endif; ?>
+      <meta property="og:url" content="<?php echo htmlspecialchars($current_url); ?>">
+      <meta property="og:type" content="website">
+
+      <!-- Twitter Card Meta Tags -->
+      <meta name="twitter:card" content="<?php echo htmlspecialchars($seo['twitter_card']); ?>">
+      <meta name="twitter:title" content="<?php echo htmlspecialchars($seo['twitter_title']); ?>">
+      <meta name="twitter:description" content="<?php echo htmlspecialchars($seo['twitter_description']); ?>">
+      <?php if (!empty($seo['twitter_image'])): ?>
+            <meta name="twitter:image" content="<?php echo htmlspecialchars($seo['twitter_image']); ?>">
+      <?php endif; ?>
+
+      <!-- Social Media Links -->
+      <?php if (!empty($social_links)): ?>
+            <script type="application/ld+json">
+                  {
+                        "@context": "https://schema.org",
+                        "@type": "Person",
+                        "sameAs": [
+                              <?php
+                              $social_urls = array_map(function ($link) {
+                                    return '"' . htmlspecialchars($link['url']) . '"';
+                              }, $social_links);
+                              echo implode(',', $social_urls);
+                              ?>
+                        ]
+                  }
+            </script>
+      <?php endif; ?>
 
       <link href="assets/users/img/favicon.ico" rel="icon">
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,4 +88,18 @@
       <script src="assets/users/js/main.js"></script>
       <script src="assets/users/js/uigg.js"></script>
 
+      <!-- PWA Service Worker Registration -->
+      <script>
+            if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                        navigator.serviceWorker.register('/sw.js')
+                              .then(registration => {
+                                    console.log('ServiceWorker registration successful');
+                              })
+                              .catch(err => {
+                                    console.log('ServiceWorker registration failed: ', err);
+                              });
+                  });
+            }
+      </script>
 </head>

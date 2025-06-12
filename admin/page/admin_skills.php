@@ -80,7 +80,36 @@ $skills = getSkills();
             </div>
       </div>
 </div>
+<script>
+      function destroySkill(element) {
+            var skill_id = $(element).data('id');
 
+            if (confirm('Are you sure you want to delete this skill?')) {
+                  $('#loading-indicator').show();
+
+                  $.ajax({
+                        url: 'page/form/delete_skill.php',
+                        method: 'POST',
+                        data: {
+                              skill_id: parseInt(skill_id)
+                        },
+                        success: function(response) {
+                              console.log('Server Response:', response.trim());
+                              if (response.trim() === 'success') {
+                                    alert('Skill deleted successfully');
+                                    location.reload();
+                              } else {
+                                    alert('Failed to delete skill: ' + response.trim());
+                              }
+                        },
+                        error: function(xhr, status, error) {
+                              console.error('AJAX Error:', error);
+                        }
+                  });
+
+            }
+      }
+</script>
 <script>
       $(document).ready(function() {
             $("#basic-datatables").DataTable({});
@@ -137,36 +166,4 @@ $skills = getSkills();
                   $("#addRowModal").modal("hide");
             });
       });
-</script>
-<script>
-      function destroySkill(element) {
-            var skill_id = $(element).data('id');
-
-            if (confirm('Are you sure you want to delete this skill?')) {
-                  $('#loading-indicator').show();
-
-                  $.ajax({
-                        url: '../../admin/page/form/delete_skill.php',
-                        method: 'POST',
-                        data: {
-                              skill_id: skill_id
-                        },
-                        success: function(response) {
-                              $('#loading-indicator').hide();
-
-                              console.log('Response from server: ', response);
-                              if (response === 'success') {
-                                    alert('Skill deleted successfully');
-                                    location.reload();
-                              } else {
-                                    alert('Failed to delete skill. Server response: ' + response);
-                              }
-                        },
-                        error: function(xhr, status, error) {
-                              $('#loading-indicator').hide();
-                              alert('Error occurred while deleting the skill: ' + error);
-                        }
-                  });
-            }
-      }
 </script>

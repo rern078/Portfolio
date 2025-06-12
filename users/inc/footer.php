@@ -1,5 +1,5 @@
 <!-- Footer Start -->
-<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+<div id="footer-container" class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
       <div class="container py-5">
             <div class="row g-5">
                   <div class="col-lg-3 col-md-6">
@@ -79,10 +79,31 @@
 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 <!-- Contact Us  Start -->
 <div class="sbuttons">
-      <a href="https://wa.me/967797762" target="_blank" class="sbutton whatsapp" tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.facebook.com/profile.php?id=61552667695284&mibextid=kFxxJD" target="_blank" class="sbutton fb" tooltip="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://t.me/TienG_ChamrerN" target="_blank" class="sbutton telegram" tooltip="Telegram"><i class="fab fa-telegram"></i></a>
-      <a href="mailto:tiengchamrern2@gmail.com" target="_blank" class="sbutton gmail" tooltip="Email"><i class="fas fa-envelope"></i></a>
+      <?php
+      $social_links = getSocialMediaLinks();
+      foreach ($social_links as $social) {
+            $icon_class = '';
+            switch (strtolower($social['platform'])) {
+                  case 'whatsapp':
+                        $icon_class = 'fab fa-whatsapp';
+                        break;
+                  case 'facebook':
+                        $icon_class = 'fab fa-facebook-f';
+                        break;
+                  case 'telegram':
+                        $icon_class = 'fab fa-telegram';
+                        break;
+                  case 'email':
+                        $icon_class = 'fas fa-envelope';
+                        break;
+                  default:
+                        $icon_class = $social['icon'] ?? 'fas fa-link';
+            }
+      ?>
+            <a href="<?php echo htmlspecialchars($social['url']); ?>" target="_blank" class="sbutton <?php echo strtolower($social['platform']); ?>" tooltip="<?php echo htmlspecialchars($social['platform']); ?>">
+                  <i class="<?php echo $icon_class; ?>"></i>
+            </a>
+      <?php } ?>
       <a target="_blank" class="sbutton mainsbutton" tooltip="Share"><i class="fas fa-share-alt"></i></a>
 </div>
 <!-- Contact Us  End -->
@@ -108,5 +129,35 @@
             <a class="theme-st" data-theme="theme-style-6"><i class="fab fa-ethereum"></i> Style 6</a>
       </div>
 </div>
+<style>
+      #footer-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            transition: transform 0.3s ease;
+            transform: translateY(100%);
+      }
 
+      #footer-container.show {
+            transform: translateY(0);
+      }
+</style>
 <!-- Theme Color End -->
+<script>
+      let lastScrollTop = 0;
+      const footer = document.getElementById('footer-container');
+
+      window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (scrollTop > lastScrollTop) {
+                  // Scrolling down
+                  footer.classList.add('show');
+            } else {
+                  // Scrolling up
+                  footer.classList.remove('show');
+            }
+
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+      });
+</script>
