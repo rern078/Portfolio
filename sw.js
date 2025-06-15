@@ -1,4 +1,4 @@
-const CACHE_NAME = 'portfolio-cache-v1';
+const CACHE_NAME = 'portfolio-cache-v3';
 const urlsToCache = [
       '/',
       '/index.php',
@@ -12,6 +12,8 @@ const urlsToCache = [
       '/assets/users/lib/easing/easing.min.js',
       '/assets/users/lib/waypoints/waypoints.min.js',
       '/assets/users/lib/owlcarousel/owl.carousel.min.js',
+      '/assets/users/img/favicon.ico',
+      '/manifest.json',
       'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css',
       'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css',
       'https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap',
@@ -48,12 +50,23 @@ self.addEventListener('fetch', event => {
                                           });
                                     return response;
                               })
-                              .catch(() => {
+                              .catch(error => {
                                     if (event.request.mode === 'navigate') {
                                           return caches.match('/');
                                     }
-                                    return new Response('Network error occurred', {
-                                          status: 408,
+                                    if (event.request.url.includes('/api/')) {
+                                          return new Response(JSON.stringify({
+                                                error: 'You are offline',
+                                                message: 'Please check your internet connection'
+                                          }), {
+                                                status: 503,
+                                                headers: {
+                                                      'Content-Type': 'application/json'
+                                                }
+                                          });
+                                    }
+                                    return new Response('You are offline. Please check your internet connection.', {
+                                          status: 503,
                                           headers: { 'Content-Type': 'text/plain' }
                                     });
                               });
